@@ -11,6 +11,7 @@ public class DemoController extends HelloServiceGrpc.HelloServiceImplBase{
 
     @Override
     public void hello(HelloRequest request, StreamObserver<HelloResponse> responseObserver) {
+        new Thread(new MyThread()).start();
         HelloResponse reply = HelloResponse.newBuilder()
                 .setGreeting("Hello ==> " + request.getName())
                 .build();
